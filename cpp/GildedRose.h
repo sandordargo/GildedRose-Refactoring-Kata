@@ -15,6 +15,10 @@ public:
 
 class GildedRose
 {
+	static const string kBrie;
+	static const string kBackstagePass;
+	static const string kSulfuras;
+
 public:
     vector<Item> & items;
     GildedRose(vector<Item> & items);

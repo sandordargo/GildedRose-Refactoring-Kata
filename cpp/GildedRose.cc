@@ -3,6 +3,10 @@
 GildedRose::GildedRose(vector<Item> & items) : items(items)
 {}
 
+const string GildedRose::kBrie("Aged Brie");
+const string GildedRose::kBackstagePass("Backstage passes to a TAFKAL80ETC concert");
+const string GildedRose::kSulfuras("Sulfuras, Hand of Ragnaros");
+
 void GildedRose::increaseQuality(Item &item)
 {
 	if (item.quality < 50){
@@ -12,25 +16,25 @@ void GildedRose::increaseQuality(Item &item)
 
 void GildedRose::decreaseQuality(Item &item)
 {
-	if (item.quality > 0 && item.name != "Sulfuras, Hand of Ragnaros"){
+	if (item.quality > 0 && item.name != kSulfuras) {
 		item.quality--;
 	}
 }
 
 void GildedRose::decreaseSellIn(Item &item)
 {
-	if (item.name != "Sulfuras, Hand of Ragnaros"){
+	if (item.name != kSulfuras) {
 		item.sellIn--;
 	}
 }
 
 void GildedRose::updateQualityOfItem(Item &item)
 {
-	if (item.name == "Aged Brie" )
+	if (item.name == kBrie)
 	{
 			increaseQuality(item);
 	}
-	else if ( item.name == "Backstage passes to a TAFKAL80ETC concert")
+	else if (item.name == kBackstagePass)
 	{
 		increaseQuality(item);
 
@@ -51,11 +55,11 @@ void GildedRose::updateQualityOfItem(Item &item)
 
 	if (item.sellIn < 0)
 	{
-		if (item.name == "Aged Brie")
+		if (item.name == kBrie)
 		{
 			increaseQuality(item);
 		}
-		else if (item.name == "Backstage passes to a TAFKAL80ETC concert")
+		else if (item.name == kBackstagePass)
 		{
 			item.quality = 0;
 		}
