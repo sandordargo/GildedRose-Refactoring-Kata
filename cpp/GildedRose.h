@@ -20,14 +20,15 @@ class GildedRose
 public:
 	std::vector<Item> & items;
     GildedRose(std::vector<Item> & items);
-    void increaseQuality(Item &item);
-    void decreaseQuality(Item &item);
-    void decreaseSellIn(Item &item);
-    void updateAttributesOfItem(Item &item);
     void updateAttributes();
-    void updateBrie(Item &item);
-    void updateBackstagePass(Item &item);
-    void updateSulfuras(Item &item);
-    void defaultUpdate(Item &item);
+private:
+    void decreaseQuality(Item &item);
+	void decreaseSellIn(Item &item);
+	void increaseQuality(Item &item);
+	void updateAttributesOfItem(Item &item);
+	void updateBrie(Item &item);
+	void updateBackstagePass(Item &item);
+	void updateSulfuras(Item &item);
+	void defaultUpdate(Item &item);
 };
 

@@ -8,25 +8,13 @@ const std::string GildedRose::kBrie("Aged Brie");
 const std::string GildedRose::kBackstagePass("Backstage passes to a TAFKAL80ETC concert");
 const std::string GildedRose::kSulfuras("Sulfuras, Hand of Ragnaros");
 
-void GildedRose::increaseQuality(Item &item)
+void GildedRose::updateAttributes()
 {
-	if (item.quality < 50){
-		item.quality++;
-	}
-}
-
-void GildedRose::decreaseQuality(Item &item)
-{
-	if (item.quality > 0 && item.name != kSulfuras) {
-		item.quality--;
-	}
-}
-
-void GildedRose::decreaseSellIn(Item &item)
-{
-	if (item.name != kSulfuras) {
-		item.sellIn--;
-	}
+    for (int i = 0; i < items.size(); i++)
+    {
+        decreaseSellIn(items[i]);
+        updateAttributesOfItem(items[i]);
+     }
 }
 
 void GildedRose::updateAttributesOfItem(Item &item)
@@ -75,11 +63,23 @@ void GildedRose::updateBackstagePass(Item &item)
 void GildedRose::updateSulfuras(Item &item) {(void)0;}
 
 
-void GildedRose::updateAttributes()
+void GildedRose::increaseQuality(Item &item)
 {
-    for (int i = 0; i < items.size(); i++)
-    {
-        decreaseSellIn(items[i]);
-        updateAttributesOfItem(items[i]);
-     }
+	if (item.quality < 50){
+		item.quality++;
+	}
+}
+
+void GildedRose::decreaseQuality(Item &item)
+{
+	if (item.quality > 0 && item.name != kSulfuras) {
+		item.quality--;
+	}
+}
+
+void GildedRose::decreaseSellIn(Item &item)
+{
+	if (item.name != kSulfuras) {
+		item.sellIn--;
+	}
 }
