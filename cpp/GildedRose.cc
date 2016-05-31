@@ -39,31 +39,18 @@ void GildedRose::updateQualityOfItem(Item &item)
 		}
 		return;
 	}
+
 	if (item.name == kBackstagePass)
 	{
 		increaseQuality(item);
-
-		if (item.sellIn < 11)
-		{
-			increaseQuality(item);
-		}
-
-		if (item.sellIn < 6)
-		{
-			increaseQuality(item);
-		}
-		if (item.sellIn < 0)
-		{
-			item.quality = 0;
-		}
+		if (item.sellIn < 11) {increaseQuality(item);}
+		if (item.sellIn < 6) {increaseQuality(item);}
+		if (item.sellIn < 0) {item.quality = 0;}
 		return;
 	}
 
 	decreaseQuality(item);
-	if (item.sellIn < 0)
-	{
-		decreaseQuality(item);
-	}
+	if (item.sellIn < 0) {decreaseQuality(item);}
 }
 
 void GildedRose::updateQuality()
