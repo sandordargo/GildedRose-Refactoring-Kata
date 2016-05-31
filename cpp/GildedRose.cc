@@ -32,9 +32,14 @@ void GildedRose::updateQualityOfItem(Item &item)
 {
 	if (item.name == kBrie)
 	{
+		increaseQuality(item);
+		if (item.sellIn < 0)
+		{
 			increaseQuality(item);
+		}
+		return;
 	}
-	else if (item.name == kBackstagePass)
+	if (item.name == kBackstagePass)
 	{
 		increaseQuality(item);
 
@@ -47,26 +52,17 @@ void GildedRose::updateQualityOfItem(Item &item)
 		{
 			increaseQuality(item);
 		}
-	}
-	else
-	{
-		decreaseQuality(item);
-	}
-
-	if (item.sellIn < 0)
-	{
-		if (item.name == kBrie)
-		{
-			increaseQuality(item);
-		}
-		else if (item.name == kBackstagePass)
+		if (item.sellIn < 0)
 		{
 			item.quality = 0;
 		}
-		else
-		{
-			decreaseQuality(item);
-		}
+		return;
+	}
+
+	decreaseQuality(item);
+	if (item.sellIn < 0)
+	{
+		decreaseQuality(item);
 	}
 }
 
