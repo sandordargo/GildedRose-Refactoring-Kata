@@ -1,4 +1,5 @@
 #include "GildedRose.h"
+#include <map>
 
 GildedRose::GildedRose(std::vector<Item> & items) : items(items)
 {}
@@ -30,10 +31,22 @@ void GildedRose::decreaseSellIn(Item &item)
 
 void GildedRose::updateAttributesOfItem(Item &item)
 {
-	if (item.name == kBrie) {updateBrie(item);}
-	else if (item.name == kBackstagePass) {updateBackstagePass(item);}
-	else if (item.name == kSulfuras) {updateSulfuras(item);}
-	else {defaultUpdate(item);}
+	typedef void (GildedRose::*FuncionPointer)(Item&);
+	std::map<std::string, FuncionPointer> itemTypeFunctionMapper;
+	itemTypeFunctionMapper.insert(std::make_pair(kBrie, &GildedRose::updateBrie));
+	itemTypeFunctionMapper.insert(std::make_pair(kBackstagePass, &GildedRose::updateBackstagePass));
+	itemTypeFunctionMapper.insert(std::make_pair(kSulfuras, &GildedRose::updateSulfuras));
+	std::map<std::string, FuncionPointer>::const_iterator functionFinder = itemTypeFunctionMapper.find(item.name);
+
+	if (functionFinder != itemTypeFunctionMapper.end())
+	{
+		FuncionPointer functionPointer = functionFinder->second;
+		(this->*functionPointer)(item);
+	}
+	else
+	{
+		defaultUpdate(item);
+	}
 }
 
 void GildedRose::defaultUpdate(Item &item)
