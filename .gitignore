@@ -1,2 +1,9 @@
 .idea/workspace.xml
 *.pyc
+*.o
+cpp/.cproject
+cpp/.project
+cpp/GildedRose
+cpp/GildedRoseTextTests
+cpp/gtest
+cpp/gtest_main.a
