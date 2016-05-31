@@ -25,7 +25,7 @@ private:
     void decreaseQuality(Item &item);
 	void decreaseSellIn(Item &item);
 	void increaseQuality(Item &item);
-	void updateAttributesOfItem(Item &item);
+	void updateQualityOfItem(Item &item);
 	void updateBrie(Item &item);
 	void updateBackstagePass(Item &item);
 	void updateSulfuras(Item &item);

@@ -13,11 +13,11 @@ void GildedRose::updateAttributes()
     for (int i = 0; i < items.size(); i++)
     {
         decreaseSellIn(items[i]);
-        updateAttributesOfItem(items[i]);
+        updateQualityOfItem(items[i]);
      }
 }
 
-void GildedRose::updateAttributesOfItem(Item &item)
+void GildedRose::updateQualityOfItem(Item &item)
 {
 	typedef void (GildedRose::*FuncionPointer)(Item&);
 	std::map<std::string, FuncionPointer> itemTypeFunctionMapper;
@@ -36,6 +36,8 @@ void GildedRose::updateAttributesOfItem(Item &item)
 		defaultUpdate(item);
 	}
 }
+
+
 
 void GildedRose::defaultUpdate(Item &item)
 {
@@ -72,7 +74,7 @@ void GildedRose::increaseQuality(Item &item)
 
 void GildedRose::decreaseQuality(Item &item)
 {
-	if (item.quality > 0 && item.name != kSulfuras) {
+	if (item.quality > 0) {
 		item.quality--;
 	}
 }
