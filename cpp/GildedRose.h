@@ -25,7 +25,7 @@ public:
     void increaseQuality(Item &item);
     void decreaseQuality(Item &item);
     void decreaseSellIn(Item &item);
-    void updateQualityOfItem(Item &item);
-    void updateQuality();
+    void updateAttributesOfItem(Item &item);
+    void updateAttributes();
 };
 

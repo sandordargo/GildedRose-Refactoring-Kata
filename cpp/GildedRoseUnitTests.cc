@@ -7,7 +7,7 @@ TEST(GildedRoseTest, NomralDecreaseForRandomItem) {
     items.push_back(Item("Foo", 10, 20));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ("Foo", app.items[0].name);
     EXPECT_EQ(9, app.items[0].sellIn);
@@ -19,7 +19,7 @@ TEST(GildedRoseTest, NegativeSellinValue) {
     items.push_back(Item("Foo", -1, 20));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ("Foo", app.items[0].name);
     EXPECT_EQ(-2, app.items[0].sellIn);
@@ -31,7 +31,7 @@ TEST(GildedRoseTest, ZeroQualityShouldNotGoNegative) {
     items.push_back(Item("Foo", 10, 0));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ("Foo", app.items[0].name);
     EXPECT_EQ(9, app.items[0].sellIn);
@@ -43,7 +43,7 @@ TEST(GildedRoseTest, AgedBrieIncreasesQuality) {
     items.push_back(Item("Aged Brie", 10, 20));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ("Aged Brie", app.items[0].name);
     EXPECT_EQ(9, app.items[0].sellIn);
@@ -55,7 +55,7 @@ TEST(GildedRoseTest, AgedBrieDoubleQualityIncreaseAfterNegativeSellinDate) {
     items.push_back(Item("Aged Brie", -1, 20));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ("Aged Brie", app.items[0].name);
     EXPECT_EQ(-2, app.items[0].sellIn);
@@ -67,7 +67,7 @@ TEST(GildedRoseTest, QualityStartsAboveFifty) {
     items.push_back(Item("Foo", 10, 51));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ("Foo", app.items[0].name);
     EXPECT_EQ(9, app.items[0].sellIn);
@@ -81,7 +81,7 @@ TEST(GildedRoseTest, QualityCappedAtFifty) {
     items.push_back(Item("Aged Brie", 10, 50));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ("Aged Brie", app.items[0].name);
     EXPECT_EQ(9, app.items[0].sellIn);
@@ -93,7 +93,7 @@ TEST(GildedRoseTest, SulfurasDoesNotChange) {
     items.push_back(Item("Sulfuras, Hand of Ragnaros", 10, 20));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ(10, app.items[0].sellIn);
     EXPECT_EQ(20, app.items[0].quality);
@@ -104,7 +104,7 @@ TEST(GildedRoseTest, BackstagePassIncreaseQualityBy1MoreThan10Days) {
     items.push_back(Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ(14, app.items[0].sellIn);
     EXPECT_EQ(21, app.items[0].quality);
@@ -115,7 +115,7 @@ TEST(GildedRoseTest, BackstagePassIncreaseQualityBy2Before10Days) {
     items.push_back(Item("Backstage passes to a TAFKAL80ETC concert", 10, 20));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ(9, app.items[0].sellIn);
     EXPECT_EQ(22, app.items[0].quality);
@@ -126,7 +126,7 @@ TEST(GildedRoseTest, BackstagePassIncreaseQualityBy3LessThan5Days) {
     items.push_back(Item("Backstage passes to a TAFKAL80ETC concert", 5, 20));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ(4, app.items[0].sellIn);
     EXPECT_EQ(23, app.items[0].quality);
@@ -137,7 +137,7 @@ TEST(GildedRoseTest, BackstagePassQualityGoesZeroWithNegativeSellinDate) {
     items.push_back(Item("Backstage passes to a TAFKAL80ETC concert", 0, 20));
     GildedRose app(items);
 
-    app.updateQuality();
+    app.updateAttributes();
 
     EXPECT_EQ(-1, app.items[0].sellIn);
     EXPECT_EQ(0, app.items[0].quality);
@@ -154,5 +154,5 @@ void example()
     items.push_back(Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
     items.push_back(Item("Conjured Mana Cake", 3, 6));
     GildedRose app(items);
-    app.updateQuality();
+    app.updateAttributes();
 }

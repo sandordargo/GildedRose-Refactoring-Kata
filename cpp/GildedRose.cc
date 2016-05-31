@@ -28,7 +28,7 @@ void GildedRose::decreaseSellIn(Item &item)
 	}
 }
 
-void GildedRose::updateQualityOfItem(Item &item)
+void GildedRose::updateAttributesOfItem(Item &item)
 {
 	if (item.name == kBrie)
 	{
@@ -53,11 +53,11 @@ void GildedRose::updateQualityOfItem(Item &item)
 	if (item.sellIn < 0) {decreaseQuality(item);}
 }
 
-void GildedRose::updateQuality()
+void GildedRose::updateAttributes()
 {
     for (int i = 0; i < items.size(); i++)
     {
         decreaseSellIn(items[i]);
-        updateQualityOfItem(items[i]);
+        updateAttributesOfItem(items[i]);
      }
 }
