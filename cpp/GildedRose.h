@@ -18,7 +18,10 @@ class GildedRose
 public:
     vector<Item> & items;
     GildedRose(vector<Item> & items);
-    
+    void increaseQuality(Item &item);
+    void decreaseQuality(Item &item);
+    void decreaseSellIn(Item &item);
+    void updateQualityOfItem(Item &item);
     void updateQuality();
 };
 
