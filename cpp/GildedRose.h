@@ -1,27 +1,25 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
 class Item
 {
 public:
-    string name;
+	std::string name;
     int sellIn;
     int quality;
-    Item(string name, int sellIn, int quality) : name(name), sellIn(sellIn), quality(quality) 
+    Item(std::string name, int sellIn, int quality) : name(name), sellIn(sellIn), quality(quality)
     {}
 };
 
 class GildedRose
 {
-	static const string kBrie;
-	static const string kBackstagePass;
-	static const string kSulfuras;
+	static const std::string kBrie;
+	static const std::string kBackstagePass;
+	static const std::string kSulfuras;
 
 public:
-    vector<Item> & items;
-    GildedRose(vector<Item> & items);
+	std::vector<Item> & items;
+    GildedRose(std::vector<Item> & items);
     void increaseQuality(Item &item);
     void decreaseQuality(Item &item);
     void decreaseSellIn(Item &item);

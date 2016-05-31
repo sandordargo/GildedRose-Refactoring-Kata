@@ -1,11 +1,11 @@
 #include "GildedRose.h"
 
-GildedRose::GildedRose(vector<Item> & items) : items(items)
+GildedRose::GildedRose(std::vector<Item> & items) : items(items)
 {}
 
-const string GildedRose::kBrie("Aged Brie");
-const string GildedRose::kBackstagePass("Backstage passes to a TAFKAL80ETC concert");
-const string GildedRose::kSulfuras("Sulfuras, Hand of Ragnaros");
+const std::string GildedRose::kBrie("Aged Brie");
+const std::string GildedRose::kBackstagePass("Backstage passes to a TAFKAL80ETC concert");
+const std::string GildedRose::kSulfuras("Sulfuras, Hand of Ragnaros");
 
 void GildedRose::increaseQuality(Item &item)
 {
