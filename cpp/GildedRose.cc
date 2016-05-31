@@ -30,28 +30,37 @@ void GildedRose::decreaseSellIn(Item &item)
 
 void GildedRose::updateAttributesOfItem(Item &item)
 {
-	if (item.name == kBrie)
-	{
-		increaseQuality(item);
-		if (item.sellIn < 0)
-		{
-			increaseQuality(item);
-		}
-		return;
-	}
+	if (item.name == kBrie) {updateBrie(item);}
+	else if (item.name == kBackstagePass) {updateBackstagePass(item);}
+	else if (item.name == kSulfuras) {updateSulfuras(item);}
+	else {defaultUpdate(item);}
+}
 
-	if (item.name == kBackstagePass)
-	{
-		increaseQuality(item);
-		if (item.sellIn < 11) {increaseQuality(item);}
-		if (item.sellIn < 6) {increaseQuality(item);}
-		if (item.sellIn < 0) {item.quality = 0;}
-		return;
-	}
-
+void GildedRose::defaultUpdate(Item &item)
+{
 	decreaseQuality(item);
 	if (item.sellIn < 0) {decreaseQuality(item);}
 }
+
+void GildedRose::updateBrie(Item &item)
+{
+	increaseQuality(item);
+	if (item.sellIn < 0)
+	{
+		increaseQuality(item);
+	}
+}
+
+void GildedRose::updateBackstagePass(Item &item)
+{
+	increaseQuality(item);
+	if (item.sellIn < 11) {increaseQuality(item);}
+	if (item.sellIn < 6) {increaseQuality(item);}
+	if (item.sellIn < 0) {item.quality = 0;}
+}
+
+void GildedRose::updateSulfuras(Item &item) {(void)0;}
+
 
 void GildedRose::updateAttributes()
 {

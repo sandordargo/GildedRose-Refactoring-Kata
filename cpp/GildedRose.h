@@ -25,5 +25,9 @@ public:
     void decreaseSellIn(Item &item);
     void updateAttributesOfItem(Item &item);
     void updateAttributes();
+    void updateBrie(Item &item);
+    void updateBackstagePass(Item &item);
+    void updateSulfuras(Item &item);
+    void defaultUpdate(Item &item);
 };
 
