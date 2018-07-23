@@ -1,5 +1,4 @@
-rm GildedRose
-rm GildedRose.o
+make clean
 make
 ./GildedRose
 ./GildedRoseTextTests > 30Days.master
