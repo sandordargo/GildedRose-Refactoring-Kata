@@ -6,13 +6,8 @@ GildedRose::GildedRose(vector<Item> & items) : items(items)
 void GildedRose::processItem(Item & item)
 {
 	if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert" && item.name != "Sulfuras, Hand of Ragnaros") {
-		item.sellIn--;
-		if (item.quality > 0) {
-			item.quality--;
-			if (item.quality > 0 && item.sellIn < 0) {
-				item.quality--;
-			}
-		}
+		item.updateSellIn();
+		item.updateQuality();
 
 	} else {
 		if(item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert"){

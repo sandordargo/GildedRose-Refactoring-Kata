@@ -11,6 +11,19 @@ public:
     int quality;
     Item(string name, int sellIn, int quality) : name(name), sellIn(sellIn), quality(quality) 
     {}
+
+    void updateSellIn() {
+    	sellIn--;
+    }
+
+    void updateQuality() {
+    	if (quality > 0) {
+			quality--;
+			if (quality > 0 && sellIn < 0) {
+				quality--;
+			}
+		}
+    }
 };
 
 class GildedRose
