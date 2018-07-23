@@ -21,7 +21,7 @@ USER_DIR = .
 CPPFLAGS += -I$(GTEST_DIR)/include
 
 # Flags passed to the C++ compiler.
-CXXFLAGS += -g -Wall -Wextra
+CXXFLAGS += -g -Wall -Wextra -std=c++11
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
@@ -70,7 +70,7 @@ gtest_main.a : gtest-all.o gtest_main.o
 # function.
 
 GildedRose.o : $(USER_DIR)/GildedRose.cc
-	$(CXX) -c $^
+	$(CXX) $(CXXFLAGS) -c $^
 
 GildedRoseUnitTests.o : $(USER_DIR)/GildedRoseUnitTests.cc \
   $(GTEST_HEADERS)
