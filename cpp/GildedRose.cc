@@ -11,6 +11,14 @@ void GildedRose::processItem(Item & item)
 
 	} else if (item.name == "Sulfuras, Hand of Ragnaros") {
 
+	} else if (item.name == "Aged Brie") {
+		item.sellIn--;
+		if (item.quality < 50) {
+			item.quality++;
+			if (item.quality < 50 && item.sellIn < 0) {
+				item.quality++;
+			}
+		}
 	} else {
 		if(item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert"){
 			if(item.quality > 0){
