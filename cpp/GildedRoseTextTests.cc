@@ -37,6 +37,6 @@ int main()
         }
         cout << endl;
 
-        app.updateQuality();
+        app.processItems();
     }
 }

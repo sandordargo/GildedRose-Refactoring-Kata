@@ -3,16 +3,10 @@
 GildedRose::GildedRose(vector<Item> & items) : items(items)
 {}
     
-void GildedRose::processItem(Item & item)
-{
-	item.updateSellIn();
-	item.updateQuality();
-}
-
-void GildedRose::updateQuality() 
+void GildedRose::processItems() 
 {
     for (Item & item: items)
     {
-        processItem(item);
+    	item.updateItem();
     }
 }

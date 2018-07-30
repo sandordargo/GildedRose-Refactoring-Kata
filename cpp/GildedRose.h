@@ -146,11 +146,8 @@ public:
 
     }
 
-    void updateSellIn() {
+    void updateItem() {
     	updater->updateSellIn();
-    }
-
-    void updateQuality() {
     	updater->updateQuality();
     }
 };
@@ -163,8 +160,6 @@ public:
     vector<Item> & items;
     GildedRose(vector<Item> & items);
     
-    void updateQuality();
-private:
-    void processItem(Item & item);
+    void processItems();
 };
 

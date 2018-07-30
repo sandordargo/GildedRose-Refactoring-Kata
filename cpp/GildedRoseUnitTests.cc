@@ -6,7 +6,7 @@ TEST(GildedRoseTest, Foo) {
     vector<Item> items;
     items.push_back(Item("Foo", 0, 0));
     GildedRose app(items);
-    app.updateQuality();
+    app.processItems();
     EXPECT_EQ("Foo", app.items[0].name);
 }
 
@@ -20,5 +20,5 @@ void example()
     items.push_back(Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
     items.push_back(Item("Conjured Mana Cake", 3, 6));
     GildedRose app(items);
-    app.updateQuality();
+    app.processItems();
 }
