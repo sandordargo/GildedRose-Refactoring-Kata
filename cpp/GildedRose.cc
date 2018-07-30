@@ -15,6 +15,12 @@ void GildedRose::processItem(Item & item)
 	} else if (item.name == "Aged Brie") {
 		item.updateSellIn();
 		item.updateQuality();
+	} else if (item.name.substr(0, 16) == "Backstage passes") {
+		item.updateSellIn();
+		item.updateQuality();
+	} else if (item.name.substr(0, 8) == "Conjured") {
+		item.updateSellIn();
+		item.updateQuality();
 	} else {
 		if(item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert"){
 			if(item.quality > 0){

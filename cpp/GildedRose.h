@@ -68,6 +68,53 @@ public:
 	}
 };
 
+class ConjuredItemUpdater : public Updater {
+public:
+	ConjuredItemUpdater(int& sellIn, int& quality) : Updater(sellIn, quality) {}
+
+	virtual ~ConjuredItemUpdater() {};
+
+	virtual void updateQuality() {
+		if (_quality > 0) {
+			_quality--;
+			if (_quality > 0) {
+				_quality--;
+			}
+		}
+	}
+
+	virtual void updateSellIn() {
+		_sellIn--;
+	}
+};
+
+class BackstagePassUpdater : public Updater {
+public:
+	BackstagePassUpdater(int& sellIn, int& quality) : Updater(sellIn, quality) {}
+
+	virtual ~BackstagePassUpdater() {};
+
+	virtual void updateQuality() {
+		if (_quality < 50) {
+			_quality++;
+			if (_sellIn < 10 && _sellIn >=5 && _quality < 50) {
+				_quality++;
+			}
+			else if (_sellIn < 5 && _sellIn >=0 && _quality < 50) {
+				_quality++;
+				_quality++;
+			}
+		}
+		if (_sellIn < 0) {
+			_quality = 0;
+		}
+	}
+
+	virtual void updateSellIn() {
+		_sellIn--;
+	}
+};
+
 class Item
 {
 public:
@@ -89,6 +136,10 @@ public:
     		updater = new SulfurasUpdater(this->sellIn, this->quality);
     	} else if(name == "Aged Brie") {
     		updater = new AgedBrieUpdater(this->sellIn, this->quality);
+    	} else if (name.substr(0, 16) == "Backstage passes") {
+    		updater = new BackstagePassUpdater(this->sellIn, this->quality);
+    	} else if (name.substr(0, 8) == "Conjured") {
+    		updater = new ConjuredItemUpdater(this->sellIn, this->quality);
     	} else {
     		updater = new DefaultUpdater(this->sellIn, this->quality);
     	}
