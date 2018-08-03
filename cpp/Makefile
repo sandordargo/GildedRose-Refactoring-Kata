@@ -69,18 +69,41 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
+SulfurasUpdater.o : $(USER_DIR)/SulfurasUpdater.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^
+
+DefaultUpdater.o : $(USER_DIR)/DefaultUpdater.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^
+
+AgedBrieUpdater.o : $(USER_DIR)/AgedBrieUpdater.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^
+
+BackstagePassUpdater.o : $(USER_DIR)/BackstagePassUpdater.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^
+
+ConjuredItemUpdater.o : $(USER_DIR)/ConjuredItemUpdater.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^
+
+Updater.o : $(USER_DIR)/Updater.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^
+
+
+Item.o : $(USER_DIR)/Item.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^
+
+
 GildedRose.o : $(USER_DIR)/GildedRose.cc
-	$(CXX) $(CXXFLAGS) -c $^
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^
 
 GildedRoseUnitTests.o : $(USER_DIR)/GildedRoseUnitTests.cc \
   $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/GildedRoseUnitTests.cc
 
-GildedRose : GildedRoseUnitTests.o GildedRose.o gtest_main.a
+GildedRose : GildedRoseUnitTests.o GildedRose.o Item.o Updater.o DefaultUpdater.o ConjuredItemUpdater.o BackstagePassUpdater.o AgedBrieUpdater.o SulfurasUpdater.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -pthread $^ -o $@
 
 GildedRoseTextTests.o : $(USER_DIR)/GildedRoseTextTests.cc
 	$(CXX) -c $^
 
-GildedRoseTextTests : GildedRoseTextTests.o GildedRose.o
+GildedRoseTextTests : GildedRoseTextTests.o GildedRose.o Item.o Updater.o DefaultUpdater.o ConjuredItemUpdater.o BackstagePassUpdater.o AgedBrieUpdater.o SulfurasUpdater.o
 	$(CXX) -pthread $^ -o $@
