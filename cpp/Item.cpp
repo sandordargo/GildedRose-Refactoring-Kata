@@ -18,26 +18,22 @@
 
 Item::Item(const Item& i):Item(i.name, i.sellIn, i.quality) {}
 
+Item::~Item() {
+	delete updater;
+}
+
 Item& Item::operator=(const Item& i){
 	this->name = i.name;
 	this->quality = i.quality;
 	this->sellIn = i.sellIn;
+	this->updater = i.updater;
+	return *this;
 }
+
 
 Item::Item(string name, int sellIn, int quality) : name(name), sellIn(sellIn), quality(quality)//, updater()
 {
-	if (name == "Sulfuras, Hand of Ragnaros") {
-		updater = new SulfurasUpdater(this->sellIn, this->quality);
-	} else if(name == "Aged Brie") {
-		updater = new AgedBrieUpdater(this->sellIn, this->quality);
-	} else if (name.substr(0, 16) == "Backstage passes") {
-		updater = new BackstagePassUpdater(this->sellIn, this->quality);
-	} else if (name.substr(0, 8) == "Conjured") {
-		updater = new ConjuredItemUpdater(this->sellIn, this->quality);
-	} else {
-		updater = new DefaultUpdater(this->sellIn, this->quality);
-	}
-
+	updater = Updater::CreateUpdater(name, this->sellIn, this->quality);
 }
 
 void Item::updateItem() {

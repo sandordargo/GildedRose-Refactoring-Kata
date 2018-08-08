@@ -39,7 +39,7 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 all : $(TESTS) $(TEXTTESTS)
 
 clean :
-	rm -f $(TESTS) $(TEXTTESTS) gtest.a gtest_main.a *.o
+	rm -f $(TESTS) $(TEXTTESTS) gtest.a gtest_main.a *.o *.gch
 
 # Builds gtest.a and gtest_main.a.
 
@@ -87,10 +87,8 @@ ConjuredItemUpdater.o : $(USER_DIR)/ConjuredItemUpdater.cpp
 Updater.o : $(USER_DIR)/Updater.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^
 
-
 Item.o : $(USER_DIR)/Item.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^
-
 
 GildedRose.o : $(USER_DIR)/GildedRose.cc
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^

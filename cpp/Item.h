@@ -7,13 +7,12 @@
 
 #ifndef ITEM_H_
 #define ITEM_H_
-#include "Updater.h"
 
 #include <string>
 
 using namespace std;
 
-//class Updater;
+class Updater;
 
 class Item
 {
@@ -27,6 +26,7 @@ public:
     Item& operator=(const Item& i);
 
     Item(string name, int sellIn, int quality);
+    ~Item();
     void updateItem();
 };
 
